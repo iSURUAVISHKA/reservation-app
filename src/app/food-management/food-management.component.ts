@@ -50,6 +50,7 @@ export class FoodManagementComponent implements OnInit {
 
   ngOnInit() {
     localStorage.setItem('foodCardItems',JSON.stringify(this.foodCartItems))
+    console.log('asasas');
   }
 
   addToCart(sourceFood : Food){
