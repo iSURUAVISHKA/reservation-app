@@ -1,0 +1,11 @@
+<clr-datagrid>
+  <clr-dg-column>Food Name</clr-dg-column>
+  <clr-dg-column>Food Price</clr-dg-column>
+  <clr-dg-row *ngFor="let food of foodCardItems">
+      <clr-dg-cell>{{food.foodName}}</clr-dg-cell>
+      <clr-dg-cell>{{"Rs." + food.foodPrice.toFixed(2) }}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer *ngIf="foodCardItems.length > 0">Total Price : {{ getTotalPrice() }}</clr-dg-footer>
+  <clr-dg-footer *ngIf="foodCardItems.length == 0">No Food Items</clr-dg-footer>
+</clr-datagrid>

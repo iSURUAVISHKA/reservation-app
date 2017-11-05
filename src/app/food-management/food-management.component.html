@@ -1,0 +1,25 @@
+<div class="row" *ngFor="let foodRow of foodlist">
+  <div *ngFor="let foodItem of foodRow" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+    <a class="card clickable">
+      <div class="card-img">
+        <img [src]="foodItem.foodImageUrl" alt="..." />
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          {{ foodItem.foodName }}
+          <span class="badge badge-blue">{{ "Rs." + foodItem.foodPrice.toFixed(2)  }}</span>
+        </p>
+        <div class="card-footer">
+          <button *ngIf="!foodItem.foodSelected" class="btn btn-primary" align="center" (click)="addToCart(foodItem)">
+            <clr-icon shape="shopping-cart" class="has-badge is-solid"></clr-icon>
+            Add to Cart
+          </button>
+          <button *ngIf="foodItem.foodSelected" class="btn btn-danger" align="center" (click)="removeFromCart(foodItem)">
+            <clr-icon shape="trash" class="has-badge is-solid"></clr-icon>
+            Remove from Cart
+          </button>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="main-container">
+    <header class="header-6">
+        <div class="branding">
+            <a href="..." class="nav-link">
+                <clr-icon shape="store"></clr-icon>
+                <span class="title">ABC Hotel</span>
+            </a>
+        </div>
+        <div class="header-nav">
+            <a href="..." class="active nav-link" routerLinkActive="active">
+                <span class="nav-text">Hotel</span>
+            </a>
+            <a href="..." class="nav-link" routerLinkActive="active">
+                <span class="nav-text">Restaurant</span>
+            </a>
+            <a href="..." class="nav-link" routerLinkActive="active">
+                <span class="nav-text">Bar & Lounge</span>
+            </a>
+            <a href="..." class="nav-link" routerLinkActive="active">
+                <span class="nav-text">Offers</span>
+            </a>
+            <a href="..." class="nav-link" routerLinkActive="active">
+                <span class="nav-text">About</span>
+            </a>
+        </div>
+        <!-- <div class="header-actions"> -->
+        <div class="header-actions">
+            <a routerLink="/cart" class="nav-link nav-icon" routerLinkActive="active">
+                <clr-icon shape="shopping-cart" class="has-badge"></clr-icon>
+            </a>
+            <clr-dropdown>
+
+                <button class="nav-icon" clrDropdownTrigger>
+
+                    <clr-icon shape="user"></clr-icon>
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                    <a href="..." clrDropdownItem>About</a>
+                    <a href="..." clrDropdownItem>Preferences</a>
+                    <a href="..." clrDropdownItem>Log out</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </header>
+    <div class="content-container">
+        <div class="content-area">
+            <router-outlet></router-outlet>
+            <!-- Content Goes Here-->
+            <!-- <app-add-reserve></app-add-reserve> -->
+            <!-- <app-food-management></app-food-management> -->
+        </div>
+
+        <nav class="sidenav">
+            <section class="sidenav-content">
+                <section class="nav-group collapsible">
+                    <input id="tabexample1" type="checkbox">
+                    <label for="tabexample1">Restaurant Management</label>
+                    <ul class="nav-list">
+                        <li>
+                            <a routerLink="/reserve">
+                                <clr-icon shape="search"></clr-icon> Make Reservation</a>
+                        </li>
+                        <li>
+                            <a class="nav-link">
+                                <clr-icon shape="plus"></clr-icon> View Reservation</a>
+                        </li>
+                        <li>
+                            <a class="nav-link">
+                                <clr-icon shape="pencil"></clr-icon> Update/Delete </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="nav-group collapsible">
+                    <input id="tabexample1" type="checkbox">
+                    <label for="tabexample1">Menu</label>
+                    <ul class="nav-list">
+                        <li>
+                            <a routerLink="/food" routerLinkActive="active">
+                                <clr-icon shape="search"></clr-icon> Make Reservation</a>
+                        </li>
+                        <li>
+                            <a class="nav-link">
+                                <clr-icon shape="plus"></clr-icon> View Reservation</a>
+                        </li>
+                        <li>
+                            <a class="nav-link">
+                                <clr-icon shape="pencil"></clr-icon> Update/Delete </a>
+                        </li>
+                    </ul>
+                </section>
+
+            </section>
+        </nav>
+    </div>
+
+</div>
+
+
+<!-- <app-login></app-login> -->
