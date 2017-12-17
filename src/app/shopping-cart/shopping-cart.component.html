@@ -8,4 +8,36 @@
 
   <clr-dg-footer *ngIf="foodCardItems.length > 0">Total Price : {{ getTotalPrice() }}</clr-dg-footer>
   <clr-dg-footer *ngIf="foodCardItems.length == 0">No Food Items</clr-dg-footer>
+  <button type="button" class="btn btn-primary" (click)="purchaseItems()">
+    Purchase
+</button>
 </clr-datagrid>
+<div>
+  <clr-modal [(clrModalOpen)]="shoow" [clrModalClosable]="false">
+      <h3 class="modal-title">Enter Credit Card Details</h3>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="dateTime">Card Number :</label>
+          <input id="dateTime" type="text" [(ngModel)]="payment.CardNumber" size="35">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="dateTime">CVC Number :</label>
+          <input id="dateTime" type="text"  [(ngModel)]="payment.CVCNumber" size="35">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="dateTime">Card Holder Name :</label>
+          <input id="dateTime" type="text"[(ngModel)]="payment.CardHolderName" size="35">
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit" (click)="cardPayment()">Card Payment</button>
+        <button class="btn btn-primary" type="submit" (click)="cashPayment()">Cash On Delivery</button>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="shoow = false">
+              Close
+          </button>
+      </div>
+  </clr-modal>
+</div>

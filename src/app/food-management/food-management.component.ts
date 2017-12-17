@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Food } from '../Food';
 
 @Component({
@@ -12,41 +13,40 @@ export class FoodManagementComponent implements OnInit {
 
   foodCartItems : Food[] = [];
 
-  constructor() { 
+  
+  constructor(private http: HttpClient) { 
 
-    this.foodlist = [[{
-      foodId : "F001",
-      foodName : "Vegetable Won Ton",
-      foodImageUrl : "../assets/images/28.4v.jpg",
-      foodPrice : 450.00,
-      foodSelected : false
-    },
-    {
-      foodId : "F002",
-      foodName : "Vegetable Won Ton",
-      foodImageUrl : "../assets/images/web_15_1.jpg",
-      foodPrice : 350.00,
-      foodSelected : false
-    },
-    {
-      foodId : "F003",
-      foodName : "Vegetable Won Ton",
-      foodImageUrl : "../assets/images/web_18_1.jpg",
-      foodPrice : 250.00,
-      foodSelected : false
-    }],
-    [
-    {
-      foodId : "F004",
-      foodName : "Vegetable Won Ton",
-      foodImageUrl : "../assets/images/306.web.1_1_.jpg",
-      foodPrice : 250.00,
-      foodSelected : false
-    }
-  ]
-  ]
-
+    this.http.get('http://localhost:59731/api/food').subscribe(data => {
+      this.foodlist = this.splitUp(data, 1);
+      console.log(this.foodlist);
+    });
   }
+
+ splitUp(arr, n) {
+    var rest = arr.length % n,
+        restUsed = rest,
+        partLength = Math.floor(arr.length / n),
+        result = [];
+    
+    for(var i = 0; i < arr.length; i += partLength) {
+        var end = partLength + i,
+            add = false;
+        
+        if(rest !== 0 && restUsed) {
+            end++;
+            restUsed--;
+            add = true;
+        }
+        
+        result.push(arr.slice(i, end));
+        
+        if(add) {
+            i++;
+        }
+    }
+    
+    return result;
+}
 
   ngOnInit() {
     localStorage.setItem('foodCardItems',JSON.stringify(this.foodCartItems))

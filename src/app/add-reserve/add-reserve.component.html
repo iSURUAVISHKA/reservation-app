@@ -27,43 +27,66 @@
       <hr>
       <!-- Date and Time -->
 
-      <div class="form-group">
-        <label for="dateTime">Date and Time :</label>
-        <label for="dateTime" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="makeReservationForm.get('dateTime').invalid
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group">
+            <label for="dateTime">Date and Time :</label>
+            <label for="dateTime" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="makeReservationForm.get('dateTime').invalid
               && (makeReservationForm.get('dateTime').dirty || makeReservationForm.get('dateTime').touched)">
-          <input id="dateTime" type="datetime-local" formControlName="dateTime" size="35">
-          <span class="tooltip-content">
-            Date and Time must be selected
-          </span>
-        </label>
-      </div>
+              <input id="dateTime" type="date" formControlName="dateTime" size="35">
+              <span class="tooltip-content">
+                Date and Time must be selected
+              </span>
+            </label>
+          </div>
 
-      <!-- Number of adultds -->
-      <div class="form-group">
-        <label for="adults">Number of adults :</label>
-        <label for="adults" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="makeReservationForm.get('adults').invalid
+          <!-- Number of adultds -->
+          <div class="form-group">
+            <label for="adults">Number of adults :</label>
+            <label for="adults" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="makeReservationForm.get('adults').invalid
                     && (makeReservationForm.get('adults').dirty || makeReservationForm.get('adults').touched)">
-          <input id="adults" type="text" formControlName="adults" size="35" [(ngModel)]="adults">
-          <span class="tooltip-content">
-            Number of adults cannot be empty.
-          </span>
-        </label>
-      </div>
+              <input id="adults" type="text" formControlName="adults" size="35" [(ngModel)]="adults">
+              <span class="tooltip-content">
+                Number of adults cannot be empty.
+              </span>
+            </label>
+          </div>
 
-      <!-- Number of children -->
-      <div class="form-group">
-        <label for="children">Number of children :</label>
-        <label for="children" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="makeReservationForm.get('children').invalid
+          <!-- Number of children -->
+          <div class="form-group">
+            <label for="children">Number of children :</label>
+            <label for="children" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="makeReservationForm.get('children').invalid
                     && (makeReservationForm.get('children').dirty || makeReservationForm.get('children').touched)">
-          <input id="children" type="text" formControlName="children" size="35" [(ngModel)]="children">
-          <span class="tooltip-content">
-            Number of adults cannot be empty.
-          </span>
-        </label>
-      </div>
-      <div>
-        <label for="children">Total Amount: Rs :</label>
-        <span class="badge badge-orange">{{ adults*1000+children*300 }}</span>
+              <input id="children" type="text" formControlName="children" size="35" [(ngModel)]="children">
+              <span class="tooltip-content">
+                Number of adults cannot be empty.
+              </span>
+            </label>
+          </div>
+          <div>
+            <label for="children">Total Amount: Rs :</label>
+            <span class="badge badge-orange">{{ adults*1000+children*300 }}</span>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <div>
+            <label for="children">Select Payment type</label>
+          </div>
+          <div>
+            <clr-dropdown>
+              <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+                Payment Type
+                <clr-icon shape="caret down"></clr-icon>
+              </button>
+              <clr-dropdown-menu clrPosition="top-left" *clrIfOpen>
+                <button type="button" clrDropdownItem (click)="shoow = true">Credit</button>
+                <button type="button" clrDropdownItem (click)="payByCash()">Cash</button>
+              </clr-dropdown-menu>
+
+            </clr-dropdown>
+          </div>
+        </div>
+
       </div>
     </div>
     <br>
@@ -73,52 +96,35 @@
     <label>
       <clr-icon class="has-badge is-solid"></clr-icon> Personal Details</label>
     <hr>
-
-    <!-- Title Category -->
-    <div class="form-group">
-      <label for="drug_category_select">Title</label>
-      <div class="select">
-        <select id="drug_category_select">
-          <option>Mr.</option>
-          <option>Mrs.</option>
-        </select>
-      </div>
-    </div>
     <!-- Company -->
-    <div class="form-group">
-      <label for="dateTime">Company :</label>
-      <input id="dateTime" type="text" formControlName="dateTime" size="35">
-    </div>
-
-    <!-- First name -->
-    <div class="form-group">
-      <label for="firstName">First name :</label>
-      <label for="firstName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="makeReservationForm.get('firstName').invalid
-                    && (makeReservationForm.get('firstName').dirty || makeReservationForm.get('firstName').touched)">
-        <input id="children" type="text" formControlName="firstName" size="35">
-        <span class="tooltip-content">
-          First name cannot be empty.
-        </span>
-      </label>
-    </div>
-
-    <!-- last name -->
-    <div class="form-group">
-      <label for="lastName">Last name :</label>
-      <label for="lastName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="makeReservationForm.get('lastName').invalid
-                        && (makeReservationForm.get('lastName').dirty || makeReservationForm.get('lastName').touched)">
-        <input id="children" type="text" formControlName="lastName" size="35">
-        <span class="tooltip-content">
-          Last name cannot be empty.
-        </span>
-      </label>
-    </div>
-
-    <div class="form-group">
-      <label for="formFields_1">E mail:</label>
-      <input type="text" id="formFields_1" placeholder="Email" size="35">
-    </div>
-    <button class="btn btn-primary" type="submit" [disabled]="makeReservationForm.invalid">Reserve</button>
-    <button class="btn btn-warning" type="submit">Reset</button>
+    
   </section>
 </form>
+<div>
+    <clr-modal [(clrModalOpen)]="shoow" [clrModalClosable]="false">
+        <h3 class="modal-title">Enter Credit Card Details</h3>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="dateTime">Card Number :</label>
+            <input id="dateTime" type="text" [(ngModel)]="payment.CardNumber" size="35">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="dateTime">CVC Number :</label>
+            <input id="dateTime" type="text"  [(ngModel)]="payment.CVCNumber" size="35">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="dateTime">Card Holder Name :</label>
+            <input id="dateTime" type="text"[(ngModel)]="payment.CardHolderName" size="35">
+          </div>
+          <br>
+          <button class="btn btn-primary" type="submit" (click)="sendPayment()">Proceed</button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="shoow = false">
+                Close
+            </button>
+        </div>
+    </clr-modal>
+</div>
